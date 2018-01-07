@@ -29,8 +29,7 @@ public class PictureController {
 
     @PostMapping(value = "/")
     public String gettingData (@RequestParam("images") String imageContent){
-        imageHandler.getImageURL(imageContent);
-        List<String> urls = imageHandler.getUrls();
+        List<String> urls = imageHandler.getImageURL(imageContent);
         htmlData.addAll(urls);
         return "redirect:/";
     }

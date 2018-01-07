@@ -14,13 +14,9 @@ import java.util.List;
 @Service
 public class ImageHandler {
 
-    List<String> urls = new ArrayList<>();
 
-    public List<String> getUrls() {
-        return urls;
-    }
-
-    public void getImageURL(String stringFromClipboard) {
+    public List<String> getImageURL(String stringFromClipboard) {
+        List<String> urls = new ArrayList<>();
         List<Character> myList = new ArrayList<Character>();
         char[] dataToTrim = stringFromClipboard.toCharArray();
         char[] img = "<img src=\"".toCharArray();
@@ -48,7 +44,7 @@ public class ImageHandler {
             urls.add(builder.toString());
         }
 
-        System.out.println(urls);
+        return urls;
 
     }
 
