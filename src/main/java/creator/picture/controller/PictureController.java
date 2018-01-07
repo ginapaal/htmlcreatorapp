@@ -22,15 +22,16 @@ public class PictureController {
 
     @GetMapping(value = "/")
     public String render() {
-        htmlData.clear();
         return "textarea";
     }
 
 
     @PostMapping(value = "/")
     public String gettingData (@RequestParam("images") String imageContent){
-        List<String> urls = imageHandler.getImageURL(imageContent);
+        imageHandler.getImageURL(imageContent);
+        List<String> urls = imageHandler.getUrls();
         htmlData.addAll(urls);
+        imageHandler.resetURLList();
         return "redirect:/";
     }
 
