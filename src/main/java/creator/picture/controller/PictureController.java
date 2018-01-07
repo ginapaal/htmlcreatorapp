@@ -22,6 +22,7 @@ public class PictureController {
 
     @GetMapping(value = "/")
     public String render() {
+        htmlData.clear();
         return "textarea";
     }
 
