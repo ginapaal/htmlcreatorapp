@@ -1,10 +1,13 @@
 package creator;
 
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class HTMLCreator {
 
     public static void main(String[] args) {
-         ImageHandler imageHandler= new ImageHandler();
-
-         imageHandler.getImageFromClipboard();
+        SpringApplication.run(HTMLCreator.class, args);
     }
 }
