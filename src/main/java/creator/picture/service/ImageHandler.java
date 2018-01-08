@@ -1,45 +1,38 @@
-package creator;
+package creator.picture.service;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+
+@Service
 public class ImageHandler {
 
-    List<String> urls = new ArrayList<String>();
+    List<String> urls = new ArrayList<>();
 
-
-    public void getImageFromClipboard() {
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        try {
-            String data = (String) clipboard.getData(DataFlavor.allHtmlFlavor);
-            gettingImageURL(data);
-        } catch (UnsupportedFlavorException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public List<String> getUrls() {
+        return urls;
     }
 
-    public void gettingImageURL(String stringFromClipboard) {
+    public void resetURLList() {
+        urls.clear();
+    }
+
+    public void getImageURL(String stringFromClipboard) {
         List<Character> myList = new ArrayList<Character>();
         char[] dataToTrim = stringFromClipboard.toCharArray();
         char[] img = "<img src=\"".toCharArray();
         char endTag = '"';
 
-        for (Character c: dataToTrim) {
+        for (Character c : dataToTrim) {
             myList.add(c);
         }
         List<Integer> indexes = searchSubString(dataToTrim, img);
 
         System.out.println(indexes);
 
-        for (Integer index: indexes) {
+        for (Integer index : indexes) {
             List<Character> characters = new ArrayList<Character>();
             for (int i = index + 10; i < myList.size(); i++) {
                 if (myList.get(i) == endTag) {
@@ -48,8 +41,7 @@ public class ImageHandler {
                 characters.add(dataToTrim[i]);
             }
             StringBuilder builder = new StringBuilder(characters.size());
-            for(Character ch: characters)
-            {
+            for (Character ch : characters) {
                 builder.append(ch);
             }
             urls.add(builder.toString());
@@ -67,9 +59,6 @@ public class ImageHandler {
         b[i] = j;
         while (i < ptrnLen) {
             while (j >= 0 && ptrn[i] != ptrn[j]) {
-                // if there is mismatch consider the next widest border
-                // The borders to be examined are obtained in decreasing order from
-                //  the values b[i], b[b[i]] etc.
                 j = b[j];
             }
             i++;
@@ -100,7 +89,7 @@ public class ImageHandler {
             if (j == ptrnLen) {
                 j = b[j];
                 System.out.println("found substring at index:" + (i - ptrnLen));
-                indexes.add(i-ptrnLen);
+                indexes.add(i - ptrnLen);
             }
         }
         return indexes;
