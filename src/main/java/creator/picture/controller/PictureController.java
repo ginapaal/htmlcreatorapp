@@ -1,7 +1,7 @@
 package creator.picture.controller;
 
 
-import creator.picture.ImageHandler;
+import creator.picture.service.ImageHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ public class PictureController {
     @Autowired
     ImageHandler imageHandler;
 
-    List<String> htmlData = new ArrayList<>();
+    List<String> urlFromClipboard = new ArrayList<>();
 
     @GetMapping(value = "/")
     public String render() {
@@ -30,14 +30,14 @@ public class PictureController {
     public String gettingData (@RequestParam("images") String imageContent){
         imageHandler.getImageURL(imageContent);
         List<String> urls = imageHandler.getUrls();
-        htmlData.addAll(urls);
+        urlFromClipboard.addAll(urls);
         imageHandler.resetURLList();
         return "redirect:/";
     }
 
     @GetMapping(value="/data")
     public String renderURLs(Model model) {
-        model.addAttribute("data", htmlData);
+        model.addAttribute("urls", urlFromClipboard);
         return "response";
     }
 

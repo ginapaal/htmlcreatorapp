@@ -1,12 +1,7 @@
-package creator.picture;
+package creator.picture.service;
 
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

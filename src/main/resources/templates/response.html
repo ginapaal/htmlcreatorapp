@@ -6,8 +6,8 @@
     <!-- Latest compiled and minified Jquery -->
 </head>
 <body>
-    <div th:each="myData: ${data}">
-        <p th:text="${myData}"></p>
+    <div th:each="url: ${urls}">
+        <img th:attr=" src = ${url}" />
     </div>
 </body>
 </html>
