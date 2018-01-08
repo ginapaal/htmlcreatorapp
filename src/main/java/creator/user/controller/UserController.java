@@ -12,9 +12,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/save")
-    private String saveUser() {
-        userService.saveUser(new User("paalginaa@gmail.com", "thebest", "Gina", "Paál"));
-        return "textarea";
+    @GetMapping("login")
+    public String loginRender() {
+        return "login";
     }
 }
