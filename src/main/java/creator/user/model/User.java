@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name="users")
 public class User {
 
     @Id
@@ -19,13 +20,21 @@ public class User {
     private String firstName;
 
     private String lastName;
-
+//
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roleSet;
 
     public User() {
     }
+
+    public User(String email, String password, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
 
     public int getId() {
         return id;
