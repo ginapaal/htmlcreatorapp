@@ -1,17 +1,21 @@
-package creator.picture.service;
+package creator.html.service;
 
+import creator.html.model.HTMLUrl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
 public class ImageHandler {
 
-    List<String> urls = new ArrayList<>();
+    Set<HTMLUrl> urls = new HashSet<>();
 
-    public List<String> getUrls() {
+    public Set<HTMLUrl> getUrls() {
         return urls;
     }
 
@@ -44,7 +48,9 @@ public class ImageHandler {
             for (Character ch : characters) {
                 builder.append(ch);
             }
-            urls.add(builder.toString());
+            HTMLUrl url = new HTMLUrl();
+            url.setUrl(builder.toString());
+            urls.add(url);
         }
 
 //        System.out.println(urls);

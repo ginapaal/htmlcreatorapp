@@ -1,7 +1,6 @@
 package creator.html.model;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,6 +21,16 @@ public class HTMLCreator {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "html_urls", joinColumns = @JoinColumn(name = "html_id"), inverseJoinColumns = @JoinColumn(name = "url_id"))
     private Set<HTMLUrl> url;
+
+    public HTMLCreator() {
+    }
+
+    public HTMLCreator(String title, String description, String price, Set<HTMLUrl> url) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.url = url;
+    }
 
     public int getId() {
         return id;

@@ -13,6 +13,13 @@ public class HTMLUrl {
 
     private String url;
 
+    public HTMLUrl() {
+    }
+
+    public HTMLUrl(String url) {
+        this.url = url;
+    }
+
     public int getId() {
         return id;
     }
