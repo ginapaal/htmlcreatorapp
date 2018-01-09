@@ -22,17 +22,23 @@ public class PictureController {
 
     @GetMapping(value = "/")
     public String render() {
-        return "textarea";
+        return "redirect:/login";
     }
 
 
-    @PostMapping(value = "/")
+    @GetMapping(value = "/index")
+    public String renderForm() {
+        return "uploadForm";
+    }
+
+
+    @PostMapping(value = "/index")
     public String gettingData (@RequestParam("images") String imageContent){
         imageHandler.getImageURL(imageContent);
         List<String> urls = imageHandler.getUrls();
         urlFromClipboard.addAll(urls);
         imageHandler.resetURLList();
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping(value="/data")

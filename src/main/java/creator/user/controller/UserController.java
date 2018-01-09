@@ -12,7 +12,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("login")
+    @GetMapping("/login")
     static String loginRender() {
         return "login";
     }

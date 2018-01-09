@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 //@EnableJpaRepositories(basePackageClasses = UserService.class)
@@ -16,17 +17,25 @@ public class WebConfigSetUp extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .authorizeRequests()
+
+        httpSecurity.
+                authorizeRequests()
                 .antMatchers("/", "/ajanlat/**").permitAll()
-                .anyRequest().authenticated().and()
-                .formLogin().loginPage("/login").permitAll().and()
-                .logout().permitAll();
+                .anyRequest().authenticated().and().csrf().disable().formLogin().permitAll()
+                .loginPage("/login").failureUrl("/login?error")
+                .defaultSuccessUrl("/index")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .and().logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/").and().exceptionHandling()
+                .accessDeniedPage("/access-denied");
     }
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("gina").password("password").roles("USER");
+        auth.inMemoryAuthentication().withUser("gina").password("password").roles("ADMIN");
     }
 
     @Override
