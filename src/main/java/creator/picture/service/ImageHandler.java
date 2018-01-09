@@ -30,7 +30,7 @@ public class ImageHandler {
         }
         List<Integer> indexes = searchSubString(dataToTrim, img);
 
-        System.out.println(indexes);
+//        System.out.println(indexes);
 
         for (Integer index : indexes) {
             List<Character> characters = new ArrayList<Character>();
@@ -47,7 +47,7 @@ public class ImageHandler {
             urls.add(builder.toString());
         }
 
-        System.out.println(urls);
+//        System.out.println(urls);
 
     }
 
@@ -88,7 +88,7 @@ public class ImageHandler {
             // a match is found
             if (j == ptrnLen) {
                 j = b[j];
-                System.out.println("found substring at index:" + (i - ptrnLen));
+//                System.out.println("found substring at index:" + (i - ptrnLen));
                 indexes.add(i - ptrnLen);
             }
         }

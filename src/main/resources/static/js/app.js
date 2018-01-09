@@ -9,12 +9,16 @@ function getData() {
         });
     });
 
-    $('#gomb').on('click', function() {
+    $('#button').on('click', function() {
+        console.log($('#title').val());
         $.ajax({
             method: 'POST',
-            url: '/',
+            url: '/index',
             data: {
-                images: data
+                images: data,
+                title: $('#title').val(),
+                description: $('#description').val(),
+                price: $('#price').val()
             },
             success: function() {
                 console.log(data);

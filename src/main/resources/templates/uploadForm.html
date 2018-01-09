@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="header ::head">
 </head>
 <body>
+<div class="container">
+    <!--<form action="/index" method="post">-->
+        <input type="text" placeholder="Cím" id="title" name="title"/>
+        <input type="text" placeholder="Leírás" id="description" name="description"/>
+        <input type="text" placeholder="Ár" id="price" name="price"/>
+        <textarea placeholder="Képek (Ctrl C - Ctr V)" name="images" id="images"></textarea>
+        <input type="submit" id="button"/>
+    <!--</form>-->
+</div>
 
 </body>
 </html>
