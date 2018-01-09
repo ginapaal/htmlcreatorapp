@@ -25,7 +25,7 @@ public class WebConfigSetUp extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    static void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("gina").password("password").roles("USER");
     }
 
