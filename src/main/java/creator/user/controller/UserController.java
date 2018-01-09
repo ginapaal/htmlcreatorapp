@@ -13,7 +13,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("login")
-    public String loginRender() {
+    static String loginRender() {
         return "login";
     }
 }
