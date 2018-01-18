@@ -48,6 +48,7 @@ public class AppController {
 //        System.out.println(title + description + price + pics);
         imageHandler.getImageURL(pics);
         Set<HTMLUrl> urls = imageHandler.getUrls();
+        System.out.println(urls);
         Offer offer = new Offer(title, description, price, urls);
         htmlService.saveHTML(offer);
         htmlId=offer.getId();
@@ -58,7 +59,6 @@ public class AppController {
     @GetMapping(value = "/ajanlat")
     @ResponseBody
     public JSONObject idToSend() {
-        System.out.println(htmlId);
         return htmlService.offerIdToJson(htmlId);
     }
 
@@ -66,7 +66,6 @@ public class AppController {
     @GetMapping(value = "/ajanlat/{html_id}")
     public String renderOffer(@PathVariable("html_id") int id, Model model) {
         Offer offer = htmlService.findHTMLById(id);
-        System.out.println(offer);
         model.addAttribute("offer", offer);
         return "response";
     }

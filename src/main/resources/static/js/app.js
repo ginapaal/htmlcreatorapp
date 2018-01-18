@@ -7,6 +7,7 @@ function getData() {
                 data = str;
             });
         });
+        $('#images').value = "Képek betöltése folyamatban, nyomd meg a submit gombot a módosításhoz"
     });
 
     $('#button').on('click', function() {

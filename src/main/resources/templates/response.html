@@ -3,12 +3,14 @@
 <head th:replace="header::head">
 </head>
 <body>
-    <h1> Ajánlat </h1>
-    <p th:text="${offer.title}"></p>
-    <p th:text="${offer.price}"></p>
-    <p th:text="${offer.description}"></p>
-    <div th:each="url: ${offer.url}">
+<div class="container">
+    <h1> [[${offer.title}]]</h1>
+    <p th:text="'Leírás: ' + ${offer.description}"></p>
+    <p th:text="'Ár: ' + ${offer.price}"></p>
+    <div th:each="url: ${offer.url}" class="col-md-4">
         <img th:src="${url.url}" />
     </div>
+</div>
+
 </body>
 </html>
