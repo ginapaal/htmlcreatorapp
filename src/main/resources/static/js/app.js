@@ -22,14 +22,19 @@ function getData() {
             },
             success: function() {
                 console.log(data);
-                data.clear;
-                console.log(data);
-
+                getId();
             }
         });
     });
+}
 
-
+function getId() {
+    $.getJSON("/ajanlat", function(resp) {
+        console.log(resp);
+        $.each(resp, function(key, value) {
+            window.location.href="/ajanlat/" + value;
+        });
+    });
 }
 
 function main() {

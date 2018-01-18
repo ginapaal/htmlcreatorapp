@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <!-- Latest compiled and minified Jquery -->
+<head th:replace="header::head">
 </head>
 <body>
-    <div th:each="url: ${urls}">
-        <img th:attr=" src = ${url}" />
+    <h1> Ajánlat </h1>
+    <p th:text="${offer.title}"></p>
+    <p th:text="${offer.price}"></p>
+    <p th:text="${offer.description}"></p>
+    <div th:each="url: ${offer.url}">
+        <img th:src="${url.url}" />
     </div>
 </body>
 </html>

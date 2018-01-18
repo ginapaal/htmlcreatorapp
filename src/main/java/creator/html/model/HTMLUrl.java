@@ -35,4 +35,12 @@ public class HTMLUrl {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "HTMLUrl{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

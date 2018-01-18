@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "datas")
-public class HTMLCreator {
+public class Offer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +22,10 @@ public class HTMLCreator {
     @JoinTable(name = "html_urls", joinColumns = @JoinColumn(name = "html_id"), inverseJoinColumns = @JoinColumn(name = "url_id"))
     private Set<HTMLUrl> url;
 
-    public HTMLCreator() {
+    public Offer() {
     }
 
-    public HTMLCreator(String title, String description, String price, Set<HTMLUrl> url) {
+    public Offer(String title, String description, String price, Set<HTMLUrl> url) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -70,5 +70,16 @@ public class HTMLCreator {
 
     public void setUrl(Set<HTMLUrl> url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price='" + price + '\'' +
+                ", url=" + url +
+                '}';
     }
 }
