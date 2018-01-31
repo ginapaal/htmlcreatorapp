@@ -3,21 +3,25 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:replace="header :: head"></head>
 <body>
-
-<div class="container">
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-
-<form th:action="@{/login}" method="post">
+<div class="jumbotron">
     <h1 class="form-signin-heading text-muted">Bejelentkezés</h1>
-    <input type="text" name="username" class="form-control" placeholder="Felhasználó név" required="" autofocus="">
-    <input type="password" name="password" class="form-control" placeholder="Jelszó" required="">
-    <a href="/index"><input class="btn btn-lg btn-primary btn-block" type="submit" value="Bejelentkezés"></a>
-</form>
+
+</div>
+<div class="container">
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <div class="col-lg-8 col-lg-offset-2">
+        <form th:action="@{/login}" method="post">
+            <input type="text" name="username" class="form-control" placeholder="Felhasználó név" required=""
+                   autofocus="">
+            <input type="password" name="password" class="form-control" placeholder="Jelszó" required="">
+            <a href="/index"><input class="btn btn-lg btn-primary btn-block" type="submit" value="Bejelentkezés"></a>
+        </form>
+    </div>
 </div>
 
 </body>

@@ -9,23 +9,32 @@ function getData() {
         });
     });
 
-    $('#gomb').on('click', function() {
+    $('#button').on('click', function() {
+        console.log($('#title').val());
         $.ajax({
             method: 'POST',
-            url: '/',
+            url: '/index',
             data: {
-                images: data
+                images: data,
+                title: $('#title').val(),
+                description: $('#description').val(),
+                price: $('#price').val()
             },
             success: function() {
                 console.log(data);
-                data.clear;
-                console.log(data);
-
+                getId();
             }
         });
     });
+}
 
-
+function getId() {
+    $.getJSON("/ajanlat", function(resp) {
+        console.log(resp);
+        $.each(resp, function(key, value) {
+            window.location.href= value + "/edit";
+        });
+    });
 }
 
 function main() {

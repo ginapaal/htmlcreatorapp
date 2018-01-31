@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="header ::head">
 </head>
 <body>
+<div class="jumbotron">
+    <h1 class="form-signin-heading text-muted"> Új ajánlat feltöltése </h1>
+</div>
+<div class="container">
+<div class="col-lg-8 col-lg-offset-2">
+    <div class="row">
+        <input class="form-control" type="text" placeholder="Cím" id="title" name="title"/>
+    </div>
+    <div class="row"><input class="form-control" type="text" placeholder="Leírás" id="description" name="description"/>
+    </div>
+    <div class="row"><input class="form-control" type="text" placeholder="Ár" id="price" name="price"/>
+    </div>
+    <div class="row"><textarea class="form-control" placeholder="Képek (Ctrl C - Ctr V)" name="images" id="images"></textarea>
+    </div>
+    <button id="button" type="button" class="btn btn-lg btn-primary btn-block"> Submit</button>
+</div>
+
+</div>
 
 </body>
 </html>
