@@ -1,4 +1,4 @@
-package creator.html.model;
+package creator.app.model;
 
 import javax.persistence.*;
 
@@ -39,7 +39,6 @@ public class HTMLUrl {
     @Override
     public String toString() {
         return "HTMLUrl{" +
-                "id=" + id +
                 ", url='" + url + '\'' +
                 '}';
     }

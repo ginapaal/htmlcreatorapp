@@ -1,6 +1,6 @@
-package creator.html.repository;
+package creator.app.repository;
 
-import creator.html.model.Offer;
+import creator.app.model.Offer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

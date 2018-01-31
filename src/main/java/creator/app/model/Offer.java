@@ -1,4 +1,4 @@
-package creator.html.model;
+package creator.app.model;
 
 import javax.persistence.*;
 import java.util.Set;

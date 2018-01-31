@@ -1,7 +1,7 @@
-package creator.html.service;
+package creator.app.service;
 
-import creator.html.model.Offer;
-import creator.html.repository.HTMLRepository;
+import creator.app.model.Offer;
+import creator.app.repository.HTMLRepository;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

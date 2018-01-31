@@ -1,10 +1,10 @@
-package creator.html.controller;
+package creator.app.controller;
 
 
-import creator.html.model.Offer;
-import creator.html.model.HTMLUrl;
-import creator.html.service.HTMLService;
-import creator.html.service.ImageHandler;
+import creator.app.model.Offer;
+import creator.app.model.HTMLUrl;
+import creator.app.service.HTMLService;
+import creator.app.service.ImageHandler;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,7 +45,6 @@ public class AppController {
                               @RequestParam("price") String price,
                               @RequestParam("images") String pics,
                               Model model) {
-//        System.out.println(title + description + price + pics);
         imageHandler.getImageURL(pics);
         Set<HTMLUrl> urls = imageHandler.getUrls();
         System.out.println(urls);
@@ -53,7 +52,7 @@ public class AppController {
         htmlService.saveHTML(offer);
         htmlId=offer.getId();
         imageHandler.resetURLList();
-        return "redirect:/ajanlat/" + htmlId;
+        return "redirect:" + htmlId + "/edit";
     }
 
     @GetMapping(value = "/ajanlat")
@@ -63,11 +62,18 @@ public class AppController {
     }
 
 
-    @GetMapping(value = "/ajanlat/{html_id}")
+    @GetMapping(value = "/{html_id}/edit")
     public String renderOffer(@PathVariable("html_id") int id, Model model) {
         Offer offer = htmlService.findHTMLById(id);
         model.addAttribute("offer", offer);
-        return "response";
+        return "edit";
+    }
+
+    @GetMapping(value="/ajanlat/{html_id}")
+    public String renderOfferPage(@PathVariable("html_id") int id, Model model) {
+        Offer offer = htmlService.findHTMLById(id);
+        model.addAttribute("offer", offer);
+        return "offer";
     }
 
 }

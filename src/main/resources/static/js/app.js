@@ -7,7 +7,6 @@ function getData() {
                 data = str;
             });
         });
-        $('#images').value = "Képek betöltése folyamatban, nyomd meg a submit gombot a módosításhoz"
     });
 
     $('#button').on('click', function() {
@@ -33,7 +32,7 @@ function getId() {
     $.getJSON("/ajanlat", function(resp) {
         console.log(resp);
         $.each(resp, function(key, value) {
-            window.location.href="/ajanlat/" + value;
+            window.location.href= value + "/edit";
         });
     });
 }

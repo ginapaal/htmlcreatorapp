@@ -1,7 +1,6 @@
-package creator.html.service;
+package creator.app.service;
 
-import creator.html.model.HTMLUrl;
-import org.springframework.beans.factory.annotation.Autowired;
+import creator.app.model.HTMLUrl;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
