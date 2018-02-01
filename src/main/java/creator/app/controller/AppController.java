@@ -48,8 +48,13 @@ public class AppController {
                               Model model) {
         imageHandler.getImageURL(pics);
         List<HTMLUrl> urls = imageHandler.getUrls();
-        System.out.println(urls);
-        Offer offer = new Offer(title, description, price, urls);
+        Offer offer = new Offer(title, description, price);
+        htmlService.saveUrl(urls);
+        for (HTMLUrl url: urls) {
+            url.setOffer(offer);
+        }
+
+        offer.setUrl(urls);
         offerService.saveOffer(offer);
         htmlId = offer.getId();
         imageHandler.resetURLList();
@@ -80,7 +85,9 @@ public class AppController {
 
     @PostMapping(value = "{html_id}/edit/delete")
     public String deleteCard(@PathVariable("html_id") int htmlId, @RequestParam("buttonId") int buttonId) {
+        System.out.println("hahó");
         htmlService.deleteCard(buttonId);
+        System.out.println("hahó");
         return "redirect:/" + htmlId + "/edit";
     }
 

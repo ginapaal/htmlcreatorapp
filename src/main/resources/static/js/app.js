@@ -28,6 +28,13 @@ function getData() {
     });
 }
 
+function refreshPage() {
+    var deleteButton = $('.delete_btn');
+    deleteButton.on('click', function() {
+        setTimeout(location.reload.bind(location), 100);
+    });
+}
+
 function getId() {
     $.getJSON("/ajanlat", function (resp) {
         console.log(resp);
@@ -61,6 +68,7 @@ function getCardId() {
 function main() {
     getData();
     getCardId();
+    refreshPage();
 }
 
 

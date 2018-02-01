@@ -13,6 +13,8 @@ public class HTMLUrl {
 
     private String url;
 
+    @ManyToOne
+    private Offer offer;
 
     public HTMLUrl() {
     }
@@ -35,6 +37,14 @@ public class HTMLUrl {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
     }
 
     @Override

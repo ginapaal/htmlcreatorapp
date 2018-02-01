@@ -21,18 +21,18 @@ public class Offer {
 
     private String price;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinTable(name = "offers_urls", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "url_id"))
+    @OneToMany(mappedBy = "offer", fetch = FetchType.EAGER)
+//    @JoinTable(name = "offers_urls", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "url_id"))
     private List<HTMLUrl> url;
 
     public Offer() {
     }
 
-    public Offer(String title, String description, String price, List<HTMLUrl> url) {
+    public Offer(String title, String description, String price) {
         this.title = title;
         this.description = description;
         this.price = price;
-        this.url = url;
+//        this.url = url;
     }
 
     public int getId() {
