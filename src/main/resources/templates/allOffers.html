@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlsn="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header::head"></head>
+<body>
+<nav th:replace="header::nav"></nav>
+
+<div class="jumbotron">
+    <h1 class="form-signin-heading text-muted"> Összes ajánlat </h1>
+</div>
+<div class="container">
+    <div th:each="offer: ${offers}" class="col-lg-8">
+        <div class="row">
+            <h5> [[${offer.title}]]</h5>
+            <a th:href="'/ajanlat/' + ${offer.id}"><button> Megnézem </button></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

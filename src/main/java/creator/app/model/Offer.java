@@ -1,10 +1,13 @@
 package creator.app.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "datas")
+@Table(name = "offers")
 public class Offer {
 
     @Id
@@ -18,14 +21,14 @@ public class Offer {
 
     private String price;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "html_urls", joinColumns = @JoinColumn(name = "html_id"), inverseJoinColumns = @JoinColumn(name = "url_id"))
-    private Set<HTMLUrl> url;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "offers_urls", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "url_id"))
+    private List<HTMLUrl> url;
 
     public Offer() {
     }
 
-    public Offer(String title, String description, String price, Set<HTMLUrl> url) {
+    public Offer(String title, String description, String price, List<HTMLUrl> url) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -64,11 +67,11 @@ public class Offer {
         this.price = price;
     }
 
-    public Set<HTMLUrl> getUrl() {
+    public List<HTMLUrl> getUrl() {
         return url;
     }
 
-    public void setUrl(Set<HTMLUrl> url) {
+    public void setUrl(List<HTMLUrl> url) {
         this.url = url;
     }
 

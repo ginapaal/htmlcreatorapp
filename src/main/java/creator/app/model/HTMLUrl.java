@@ -13,6 +13,7 @@ public class HTMLUrl {
 
     private String url;
 
+
     public HTMLUrl() {
     }
 
@@ -38,7 +39,7 @@ public class HTMLUrl {
 
     @Override
     public String toString() {
-        return "HTMLUrl{" +
+        return "HTMLUrl{ id: " + getId() +
                 ", url='" + url + '\'' +
                 '}';
     }

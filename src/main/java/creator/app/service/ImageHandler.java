@@ -12,9 +12,9 @@ import java.util.Set;
 @Service
 public class ImageHandler {
 
-    Set<HTMLUrl> urls = new HashSet<>();
+    List<HTMLUrl> urls = new ArrayList<>();
 
-    public Set<HTMLUrl> getUrls() {
+    public List<HTMLUrl> getUrls() {
         return urls;
     }
 

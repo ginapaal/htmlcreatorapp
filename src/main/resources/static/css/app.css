@@ -1,8 +1,12 @@
 body {
-    padding-top: 120px;
     padding-bottom: 40px;
     background-color: #eee;
+}
 
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
 }
 
 .btn {
