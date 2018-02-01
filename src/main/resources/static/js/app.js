@@ -31,7 +31,7 @@ function getData() {
 function refreshPage() {
     var deleteButton = $('.delete_btn');
     deleteButton.on('click', function() {
-        setTimeout(location.reload.bind(location), 100);
+        setTimeout(location.reload.bind(location), 200);
     });
 }
 

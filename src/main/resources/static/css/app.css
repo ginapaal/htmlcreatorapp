@@ -92,11 +92,12 @@ body {
 }
 
 .card {
+    margin: auto;
     padding: 10px;
     background-color: white;
     height: 300px;
     width: 250px;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
 }
 
 .card-img-top {
@@ -104,4 +105,12 @@ body {
     object-fit: contain;
     height: auto;
     margin: auto;
+}
+
+.content {
+    text-align: center;
+}
+
+.col-md-4 {
+    margin-bottom: 30px;
 }
