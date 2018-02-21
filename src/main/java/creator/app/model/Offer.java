@@ -1,10 +1,7 @@
 package creator.app.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "offers")
@@ -22,7 +19,6 @@ public class Offer {
     private String price;
 
     @OneToMany(mappedBy = "offer", fetch = FetchType.EAGER)
-//    @JoinTable(name = "offers_urls", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "url_id"))
     private List<HTMLUrl> url;
 
     public Offer() {
@@ -32,7 +28,6 @@ public class Offer {
         this.title = title;
         this.description = description;
         this.price = price;
-//        this.url = url;
     }
 
     public int getId() {

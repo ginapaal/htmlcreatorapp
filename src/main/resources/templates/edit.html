@@ -10,15 +10,15 @@
     </div>
     <div class="row">
         <div class="content">
-            <h1> [[${offer.title}]]</h1>
-            <p th:text="'Leírás: ' + ${offer.description}"></p>
-            <p th:text="'Ár: ' + ${offer.price}"></p>
+            <h1> [[${myOffer.title}]]</h1>
+            <p th:text="'Leírás: ' + ${myOffer.description}"></p>
+            <p th:text="'Ár: ' + ${myOffer.price}"></p>
         </div>
     </div>
     <div class="row">
-        <div class="offer">
+        <div class="myOffer">
 
-            <div th:each="url: ${offer.url}" class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+            <div th:each="url: ${myOffer.url}" class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                 <div class="card" draggable="true">
                     <img class="card-img-top" th:src="${url.url}" alt=""/>
                     <div class="card-body">
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <a th:href="'/ajanlat/' + ${offer.id}"><button> Végleges ajánlat elkészítése </button></a>
+    <a th:href="'/ajanlat/' + ${myOffer.id}"><button> Végleges ajánlat elkészítése </button></a>
 </div>
 
 </body>

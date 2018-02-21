@@ -1,21 +1,25 @@
 package creator.app.controller;
 
 
-import creator.app.model.Offer;
 import creator.app.model.HTMLUrl;
+import creator.app.model.Offer;
 import creator.app.service.HTMLService;
-import creator.app.service.OfferService;
 import creator.app.service.ImageHandler;
+import creator.app.service.OfferService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
 
 @Controller
 public class AppController {
+
+    private Log logger = LogFactory.getLog(this.getClass());
 
     @Autowired
     ImageHandler imageHandler;
@@ -26,7 +30,7 @@ public class AppController {
     @Autowired
     HTMLService htmlService;
 
-    int htmlId;
+    private int htmlId;
 
     @GetMapping(value = "/")
     public String render() {
@@ -44,8 +48,7 @@ public class AppController {
     public String gettingData(@RequestParam("title") String title,
                               @RequestParam("description") String description,
                               @RequestParam("price") String price,
-                              @RequestParam("images") String pics,
-                              Model model) {
+                              @RequestParam("images") String pics) {
         imageHandler.getImageURL(pics);
         List<HTMLUrl> urls = imageHandler.getUrls();
         Offer offer = new Offer(title, description, price);
@@ -71,8 +74,8 @@ public class AppController {
     @GetMapping(value = "/{html_id}/edit")
     public String renderOffer(@PathVariable("html_id") int id, Model model) {
         Offer offer = offerService.findOfferById(id);
-        System.out.println(offer);
-        model.addAttribute("offer", offer);
+        logger.info(offer);
+        model.addAttribute("myOffer", offer);
         return "edit";
     }
 
@@ -85,9 +88,7 @@ public class AppController {
 
     @PostMapping(value = "{html_id}/edit/delete")
     public String deleteCard(@PathVariable("html_id") int htmlId, @RequestParam("buttonId") int buttonId) {
-        System.out.println("hahó");
         htmlService.deleteCard(buttonId);
-        System.out.println("hahó");
         return "redirect:/" + htmlId + "/edit";
     }
 
